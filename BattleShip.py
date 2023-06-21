@@ -118,6 +118,12 @@ def setMyShips():
         while valid == False:
             coord = input(f"Enter ship {ship} starting coordinate: ")
             [x, y] = coord2Index(coord)
+
+            while x > 20 or y > 10:
+                print("***Coordinate invalid!***")
+                target = input(f"Enter ship {ship} starting coordinate: ")
+                [x, y] = coord2Index(target)
+
             if ship == 'E':
                 direction = 'up'
             else:
@@ -148,6 +154,12 @@ while gameOver == False:
 
     target = input("Enter target coordinate: ")
     [x, y] = coord2Index(target)
+
+    while x > 20 or y > 10:
+        print("Invalid coordinate")
+        target = input("Enter target coordinate: ")
+        [x, y] = coord2Index(target)
+
     if enemyGrid[x][y] == '*' or enemyGridShow[x][y] == 'X':
         print("Shot missed!")
         enemyGridShow[x] = replaceStr(enemyGridShow[x], 'X', y)
